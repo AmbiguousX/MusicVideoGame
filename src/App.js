@@ -8,6 +8,7 @@ import Ecctrl, { EcctrlAnimation, EcctrlJoystick } from 'ecctrl'
 import Lights from './Lights'
 import Map from './Map'
 import CharacterModel from './CharacterModel'
+import AudioPlayer from './AudioPlayer';
 
 export default function App() {
   /**
@@ -29,35 +30,33 @@ export default function App() {
   /**
    * Character url preset
    */
-  const characterURL = './Demon.glb'
+  const characterURL = './d00m.glb'
 
   /**
    * Character animation set preset
    */
   const animationSet = {
-    idle: 'CharacterArmature|Idle',
-    walk: 'CharacterArmature|Walk',
-    run: 'CharacterArmature|Run',
-    jump: 'CharacterArmature|Jump',
-    jumpIdle: 'CharacterArmature|Jump_Idle',
-    jumpLand: 'CharacterArmature|Jump_Land',
-    fall: 'CharacterArmature|Duck', // This is for falling from high sky
-    action1: 'CharacterArmature|Wave',
-    action2: 'CharacterArmature|Death',
-    action3: 'CharacterArmature|HitReact',
-    action4: 'CharacterArmature|Punch'
+    idle: 'Idle',
+    walk: 'Walk',
+    run: 'Run',
+    jump: 'Jump',
+    jumpIdle: 'Jump_Idle',
+    jumpLand: 'Jump_Land',
+    fall: "Jump_Idle",
+
   }
 
   return (
     <>
+      <AudioPlayer src="/sowrong.mp3" />
       <EcctrlJoystick buttonNumber={2} />
       <Canvas
         shadows
-        // onPointerDown={(e) => {
-        //   if (e.pointerType === "mouse") {
-        //     e.target.requestPointerLock();
-        //   }
-        // }}
+      // onPointerDown={(e) => {
+      //   if (e.pointerType === "mouse") {
+      //     e.target.requestPointerLock();
+      //   }
+      // }}
       >
         <Perf position="top-left" minimal />
         <Environment background files="/night.hdr" />
@@ -66,9 +65,11 @@ export default function App() {
           <Physics timeStep="vary">
             <KeyboardControls map={keyboardMap}>
               <Ecctrl debug animated>
+
                 <EcctrlAnimation characterURL={characterURL} animationSet={animationSet}>
                   <CharacterModel />
                 </EcctrlAnimation>
+
               </Ecctrl>
             </KeyboardControls>
             <Map />
@@ -76,5 +77,6 @@ export default function App() {
         </Suspense>
       </Canvas>
     </>
+
   )
 }
