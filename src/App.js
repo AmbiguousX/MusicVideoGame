@@ -64,7 +64,7 @@ export default function App() {
         <Suspense fallback={null}>
           <Physics timeStep="vary">
             <KeyboardControls map={keyboardMap}>
-              <Ecctrl debug animated>
+              <Ecctrl debug animated position={[0, 10, 0]}>
 
                 <EcctrlAnimation characterURL={characterURL} animationSet={animationSet}>
                   <CharacterModel />
