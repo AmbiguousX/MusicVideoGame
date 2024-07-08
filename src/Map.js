@@ -1,9 +1,15 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useGLTF } from '@react-three/drei';
 import { RigidBody } from '@react-three/rapier';
 
-export default function Map(props) {
-  const { nodes, materials } = useGLTF('/city.glb');
+export default function Map({ onLoaded, ...props }) {
+  const { nodes, materials } = useGLTF('/city.glb', true);
+
+  useEffect(() => {
+    if (onLoaded) {
+      onLoaded();
+    }
+  }, [onLoaded]);
 
   return (
     <RigidBody type="fixed" colliders="trimesh" ccd>

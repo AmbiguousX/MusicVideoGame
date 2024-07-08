@@ -2,7 +2,7 @@ import { Canvas } from '@react-three/fiber'
 import { Physics } from '@react-three/rapier'
 import { Environment, KeyboardControls } from '@react-three/drei'
 import { Perf } from 'r3f-perf'
-import { Suspense } from 'react'
+import { Suspense, useState, useEffect } from 'react'
 import Ecctrl, { EcctrlAnimation, EcctrlJoystick } from 'ecctrl'
 
 import Lights from './Lights'
@@ -11,6 +11,8 @@ import CharacterModel from './CharacterModel'
 import AudioPlayer from './AudioPlayer';
 
 export default function App() {
+  const [mapLoaded, setMapLoaded] = useState(false);
+
   /**
    * Keyboard control preset
    */
@@ -43,40 +45,31 @@ export default function App() {
     jumpIdle: 'Jump_Idle',
     jumpLand: 'Jump_Land',
     fall: "Jump_Idle",
-
   }
 
   return (
     <>
       <AudioPlayer src="/sowrong.mp3" />
       <EcctrlJoystick buttonNumber={2} />
-      <Canvas
-        shadows
-      // onPointerDown={(e) => {
-      //   if (e.pointerType === "mouse") {
-      //     e.target.requestPointerLock();
-      //   }
-      // }}
-      >
+      <Canvas shadows>
         <Perf position="top-left" minimal />
         <Environment background files="/night.hdr" />
         <Lights />
         <Suspense fallback={null}>
           <Physics timeStep="vary">
             <KeyboardControls map={keyboardMap}>
-              <Ecctrl debug animated position={[0, 10, 0]}>
-
-                <EcctrlAnimation characterURL={characterURL} animationSet={animationSet}>
-                  <CharacterModel />
-                </EcctrlAnimation>
-
-              </Ecctrl>
+              <Map onLoaded={() => setMapLoaded(true)} />
+              {mapLoaded && (
+                <Ecctrl debug animated position={[0, 10, 0]}>
+                  <EcctrlAnimation characterURL={characterURL} animationSet={animationSet}>
+                    <CharacterModel />
+                  </EcctrlAnimation>
+                </Ecctrl>
+              )}
             </KeyboardControls>
-            <Map />
           </Physics>
         </Suspense>
       </Canvas>
     </>
-
   )
 }
