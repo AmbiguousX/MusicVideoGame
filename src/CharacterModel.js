@@ -7,70 +7,103 @@ import { useGLTF, useAnimations } from '@react-three/drei'
 
 export default function Model(props) {
   const group = useRef()
-  const { nodes, materials, animations } = useGLTF('/d00m.glb')
+  const { nodes, materials, animations } = useGLTF('/Noah.glb')
   const { actions } = useAnimations(animations, group)
   return (
     <group ref={group} {...props} dispose={null}>
       <group name="Scene">
         <group name="Armature" rotation={[Math.PI / 2, 0, 0]} scale={0.01} position={[0, -.9, 0]}>
           <skinnedMesh
-            name="Body"
-            geometry={nodes.Body.geometry}
-            material={materials['lambert2.001']}
-            skeleton={nodes.Body.skeleton}
+            name="avaturn_hair_0001"
+            geometry={nodes.avaturn_hair_0001.geometry}
+            material={materials['avaturn_hair_0_material.002']}
+            skeleton={nodes.avaturn_hair_0001.skeleton}
           />
           <skinnedMesh
-            name="BottomTeeth"
-            geometry={nodes.BottomTeeth.geometry}
-            material={materials['lambert2.001']}
-            skeleton={nodes.BottomTeeth.skeleton}
-            morphTargetDictionary={nodes.BottomTeeth.morphTargetDictionary}
-            morphTargetInfluences={nodes.BottomTeeth.morphTargetInfluences}
+            name="avaturn_hair_1001"
+            geometry={nodes.avaturn_hair_1001.geometry}
+            material={materials['avaturn_hair_1_material.001']}
+            skeleton={nodes.avaturn_hair_1001.skeleton}
           />
           <skinnedMesh
-            name="Face001"
-            geometry={nodes.Face001.geometry}
-            material={materials['lambert2.001']}
-            skeleton={nodes.Face001.skeleton}
-            morphTargetDictionary={nodes.Face001.morphTargetDictionary}
-            morphTargetInfluences={nodes.Face001.morphTargetInfluences}
+            name="avaturn_hair_2001"
+            geometry={nodes.avaturn_hair_2001.geometry}
+            material={materials['avaturn_hair_2_material.001']}
+            skeleton={nodes.avaturn_hair_2001.skeleton}
           />
           <skinnedMesh
-            name="Hat"
-            geometry={nodes.Hat.geometry}
-            material={materials['lambert2.001']}
-            skeleton={nodes.Hat.skeleton}
+            name="avaturn_look_0001"
+            geometry={nodes.avaturn_look_0001.geometry}
+            material={materials['avaturn_look_0_material.003']}
+            skeleton={nodes.avaturn_look_0001.skeleton}
           />
           <skinnedMesh
-            name="LeftEye"
-            geometry={nodes.LeftEye.geometry}
-            material={materials['lambert2.001']}
-            skeleton={nodes.LeftEye.skeleton}
-            morphTargetDictionary={nodes.LeftEye.morphTargetDictionary}
-            morphTargetInfluences={nodes.LeftEye.morphTargetInfluences}
+            name="avaturn_shoes_0001"
+            geometry={nodes.avaturn_shoes_0001.geometry}
+            material={materials['avaturn_shoes_0_material.003']}
+            skeleton={nodes.avaturn_shoes_0001.skeleton}
           />
           <skinnedMesh
-            name="RightEye"
-            geometry={nodes.RightEye.geometry}
-            material={materials['lambert2.001']}
-            skeleton={nodes.RightEye.skeleton}
-            morphTargetDictionary={nodes.RightEye.morphTargetDictionary}
-            morphTargetInfluences={nodes.RightEye.morphTargetInfluences}
+            name="Body_Mesh001"
+            geometry={nodes.Body_Mesh001.geometry}
+            material={materials['Body.003']}
+            skeleton={nodes.Body_Mesh001.skeleton}
           />
-          <skinnedMesh
-            name="TopTeeth"
-            geometry={nodes.TopTeeth.geometry}
-            material={materials['lambert2.001']}
-            skeleton={nodes.TopTeeth.skeleton}
-            morphTargetDictionary={nodes.TopTeeth.morphTargetDictionary}
-            morphTargetInfluences={nodes.TopTeeth.morphTargetInfluences}
-          />
+          <group name="Head_Mesh001">
+            <skinnedMesh
+              name="Eye_Mesh001"
+              geometry={nodes.Eye_Mesh001.geometry}
+              material={materials['Eyes.003']}
+              skeleton={nodes.Eye_Mesh001.skeleton}
+              morphTargetDictionary={nodes.Eye_Mesh001.morphTargetDictionary}
+              morphTargetInfluences={nodes.Eye_Mesh001.morphTargetInfluences}
+            />
+            <skinnedMesh
+              name="Eye_Mesh001_1"
+              geometry={nodes.Eye_Mesh001_1.geometry}
+              material={materials['EyeAO.003']}
+              skeleton={nodes.Eye_Mesh001_1.skeleton}
+              morphTargetDictionary={nodes.Eye_Mesh001_1.morphTargetDictionary}
+              morphTargetInfluences={nodes.Eye_Mesh001_1.morphTargetInfluences}
+            />
+            <skinnedMesh
+              name="Eye_Mesh001_2"
+              geometry={nodes.Eye_Mesh001_2.geometry}
+              material={materials['Eyelash.003']}
+              skeleton={nodes.Eye_Mesh001_2.skeleton}
+              morphTargetDictionary={nodes.Eye_Mesh001_2.morphTargetDictionary}
+              morphTargetInfluences={nodes.Eye_Mesh001_2.morphTargetInfluences}
+            />
+            <skinnedMesh
+              name="Eye_Mesh001_3"
+              geometry={nodes.Eye_Mesh001_3.geometry}
+              material={materials['Head.003']}
+              skeleton={nodes.Eye_Mesh001_3.skeleton}
+              morphTargetDictionary={nodes.Eye_Mesh001_3.morphTargetDictionary}
+              morphTargetInfluences={nodes.Eye_Mesh001_3.morphTargetInfluences}
+            />
+            <skinnedMesh
+              name="Eye_Mesh001_4"
+              geometry={nodes.Eye_Mesh001_4.geometry}
+              material={materials['Teeth.001']}
+              skeleton={nodes.Eye_Mesh001_4.skeleton}
+              morphTargetDictionary={nodes.Eye_Mesh001_4.morphTargetDictionary}
+              morphTargetInfluences={nodes.Eye_Mesh001_4.morphTargetInfluences}
+            />
+            <skinnedMesh
+              name="Eye_Mesh001_5"
+              geometry={nodes.Eye_Mesh001_5.geometry}
+              material={materials['Teeth.001']}
+              skeleton={nodes.Eye_Mesh001_5.skeleton}
+              morphTargetDictionary={nodes.Eye_Mesh001_5.morphTargetDictionary}
+              morphTargetInfluences={nodes.Eye_Mesh001_5.morphTargetInfluences}
+            />
+          </group>
           <primitive object={nodes.mixamorigHips} />
         </group>
-        <group name="facial_landmarks" />
       </group>
     </group>
   )
 }
 
-useGLTF.preload('/d00m.glb')
+useGLTF.preload('/Noah.glb')

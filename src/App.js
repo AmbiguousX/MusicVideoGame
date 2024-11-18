@@ -32,7 +32,7 @@ export default function App() {
   /**
    * Character url preset
    */
-  const characterURL = './d00m.glb'
+  const characterURL = './Noah.glb'
 
   /**
    * Character animation set preset
