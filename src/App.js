@@ -58,12 +58,14 @@ export default function App() {
         <Suspense fallback={null}>
           <Physics timeStep="vary">
             <KeyboardControls map={keyboardMap}>
-              <Ecctrl animated position={[11, 5, 13]} >
-                <EcctrlAnimation characterURL={characterURL} animationSet={animationSet}>
-                  <CharacterModel />
-                </EcctrlAnimation>
-              </Ecctrl>
               <Map onLoaded={() => setMapLoaded(true)} />
+              {mapLoaded && (
+                <Ecctrl animated position={[11, 5, 13]} >
+                  <EcctrlAnimation characterURL={characterURL} animationSet={animationSet}>
+                    <CharacterModel />
+                  </EcctrlAnimation>
+                </Ecctrl>
+              )}
             </KeyboardControls>
           </Physics>
         </Suspense>
