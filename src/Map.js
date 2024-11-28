@@ -3,7 +3,7 @@ import { useGLTF } from '@react-three/drei';
 import { RigidBody } from '@react-three/rapier';
 
 export default function Map({ onLoaded, ...props }) {
-  const { nodes, materials } = useGLTF('/city.glb', true);
+  const { nodes, materials } = useGLTF('/tblisis.glb', true);
 
   useEffect(() => {
     if (onLoaded) {
@@ -17,42 +17,29 @@ export default function Map({ onLoaded, ...props }) {
         <mesh
           castShadow
           receiveShadow
-          geometry={nodes.Object_93.geometry}
-          material={materials.fasades}
+          geometry={nodes.Mesh_0.geometry}
+          material={materials.Material_0}
+          position={[0, -0.854, 0]}
         />
         <mesh
           castShadow
           receiveShadow
-          geometry={nodes.Object_93_1.geometry}
-          material={materials.fasades2}
+          geometry={nodes.Plane001.geometry}
+          material={materials['Material.002']}
+          position={[0, -4.921, 0]}
+          scale={20.498}
         />
         <mesh
           castShadow
           receiveShadow
-          geometry={nodes.Object_93_2.geometry}
-          material={materials.details}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.Object_93_3.geometry}
-          material={materials.rails}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.Object_93_4.geometry}
-          material={materials.base}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.Object_93_5.geometry}
-          material={materials.vehicles}
+          geometry={nodes.Cube.geometry}
+          material={materials['Material.001']}
+          position={[10.858, -1.451, 2.237]}
+          scale={[1, 1, 8.255]}
         />
       </group>
     </RigidBody>
   );
 }
 
-useGLTF.preload('/city.glb');
+useGLTF.preload('/tblisis.glb');

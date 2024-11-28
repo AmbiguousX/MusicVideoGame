@@ -60,7 +60,7 @@ export default function App() {
             <KeyboardControls map={keyboardMap}>
               <Map onLoaded={() => setMapLoaded(true)} />
               {mapLoaded && (
-                <Ecctrl debug animated position={[0, 10, 0]}>
+                <Ecctrl animated position={[11, 3, 13]} >
                   <EcctrlAnimation characterURL={characterURL} animationSet={animationSet}>
                     <CharacterModel />
                   </EcctrlAnimation>
