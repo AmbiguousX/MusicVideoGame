@@ -12,6 +12,7 @@ import AudioPlayer from './AudioPlayer';
 
 export default function App() {
   const [mapLoaded, setMapLoaded] = useState(false);
+  const [characterSpawned, setCharacterSpawned] = useState(false);
 
   /**
    * Keyboard control preset
@@ -47,6 +48,16 @@ export default function App() {
     fall: "Jump_Idle",
   }
 
+  useEffect(() => {
+    let timer;
+    if (mapLoaded) {
+      timer = setTimeout(() => {
+        setCharacterSpawned(true);
+      }, 1000);
+    }
+    return () => clearTimeout(timer);
+  }, [mapLoaded]);
+
   return (
     <>
       <AudioPlayer src="/sowrong.mp3" />
@@ -59,7 +70,7 @@ export default function App() {
           <Physics timeStep="vary">
             <KeyboardControls map={keyboardMap}>
               <Map onLoaded={() => setMapLoaded(true)} />
-              {mapLoaded && (
+              {characterSpawned && (
                 <Ecctrl animated position={[11, 5, 13]} >
                   <EcctrlAnimation characterURL={characterURL} animationSet={animationSet}>
                     <CharacterModel />
