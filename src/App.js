@@ -56,7 +56,7 @@ export default function App() {
         <Environment background files="/night.hdr" />
         <Lights />
         <Suspense fallback={null}>
-          <Physics timeStep="vary" paused={!mapLoaded}>
+          <Physics timeStep="vary" >
             <KeyboardControls map={keyboardMap}>
               <Ecctrl animated position={[11, 5, 13]}>
                 <EcctrlAnimation characterURL={characterURL} animationSet={animationSet}>
