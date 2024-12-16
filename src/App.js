@@ -56,13 +56,15 @@ export default function App() {
         <Environment background files="/night.hdr" />
         <Lights />
         <Suspense fallback={null}>
-          <Physics timeStep="vary" >
+          <Physics timeStep="vary">
             <KeyboardControls map={keyboardMap}>
-              <Ecctrl animated position={[11, 7, 13]}>
-                <EcctrlAnimation characterURL={characterURL} animationSet={animationSet}>
-                  <CharacterModel position={[0, -.9, 0]} />
-                </EcctrlAnimation>
-              </Ecctrl>
+              {mapLoaded && (  // Only render character after map loads
+                <Ecctrl animated position={[11, 7, 13]}>
+                  <EcctrlAnimation characterURL={characterURL} animationSet={animationSet}>
+                    <CharacterModel position={[0, -.9, 0]} />
+                  </EcctrlAnimation>
+                </Ecctrl>
+              )}
               <Map onLoaded={() => setMapLoaded(true)} />
             </KeyboardControls>
           </Physics>
