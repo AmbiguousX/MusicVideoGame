@@ -32,7 +32,7 @@ export default function App() {
   /**
    * Character url preset
    */
-  const characterURL = './Noah.glb'
+  const characterURL = './d00m.glb'
 
   /**
    * Character animation set preset
@@ -58,9 +58,9 @@ export default function App() {
         <Suspense fallback={null}>
           <Physics timeStep="vary" >
             <KeyboardControls map={keyboardMap}>
-              <Ecctrl animated position={[11, 5, 13]}>
+              <Ecctrl animated position={[11, 7, 13]}>
                 <EcctrlAnimation characterURL={characterURL} animationSet={animationSet}>
-                  <CharacterModel />
+                  <CharacterModel position={[0, -.9, 0]} />
                 </EcctrlAnimation>
               </Ecctrl>
               <Map onLoaded={() => setMapLoaded(true)} />
