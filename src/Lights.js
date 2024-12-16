@@ -21,8 +21,6 @@ export default function Lights() {
       />
       <ambientLight intensity={0.2} color="#FFFBCC" />
 
-
-
       <pointLight
         ref={(el) => (pointLights.current[0] = el)}
         intensity={.3}
@@ -34,10 +32,6 @@ export default function Lights() {
         shadow-camera-near={0.1}
         shadow-camera-far={50}
       />
-      <mesh position={[11.023600146402007, -1.4386822940538604, 9.144784479598881]}>
-        <sphereGeometry args={[0.2, 32, 32]} />
-        <meshBasicMaterial color="#FFFFDD" depthTest={false} depthWrite={false} />
-      </mesh>
 
       <pointLight
         ref={(el) => (pointLights.current[1] = el)}
@@ -50,10 +44,6 @@ export default function Lights() {
         shadow-camera-near={0.1}
         shadow-camera-far={50}
       />
-      <mesh position={[11.023600146402007, -1.4386822940538604, -2.0823108792107607]}>
-        <sphereGeometry args={[0.2, 32, 32]} />
-        <meshBasicMaterial color="#FFFFDD" depthTest={false} depthWrite={false} />
-      </mesh>
     </>
   );
 }

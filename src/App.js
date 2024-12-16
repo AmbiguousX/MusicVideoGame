@@ -50,7 +50,7 @@ export default function App() {
   return (
     <>
       <AudioPlayer src="/sowrong.mp3" />
-      <EcctrlJoystick buttonNumber={2} />
+      <EcctrlJoystick buttonNumber={1} joystickPositionBottom="50px" buttonPositionBottom="10px" />
       <Canvas shadows>
         <Perf position="top-left" minimal />
         <Environment background files="/night.hdr" />
@@ -59,9 +59,9 @@ export default function App() {
           <Physics timeStep="vary">
             <KeyboardControls map={keyboardMap}>
               {mapLoaded && (  // Only render character after map loads
-                <Ecctrl animated position={[11, 7, 13]}>
+                <Ecctrl animated position={[11, 7, 13]} rotation={[0, 180, 0]} >
                   <EcctrlAnimation characterURL={characterURL} animationSet={animationSet}>
-                    <CharacterModel position={[0, -.9, 0]} />
+                    <CharacterModel position={[0, -.95, 0]} />
                   </EcctrlAnimation>
                 </Ecctrl>
               )}
